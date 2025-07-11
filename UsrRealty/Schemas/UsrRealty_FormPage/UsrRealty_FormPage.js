@@ -314,6 +314,28 @@ define("UsrRealty_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 				"parentName": "GeneralInfoTabContainer",
 				"propertyName": "items",
 				"index": 4
+			},
+			{
+				"operation": "insert",
+				"name": "CommissionPercent",
+				"values": {
+					"layoutConfig": {
+						"column": 2,
+						"colSpan": 1,
+						"row": 4,
+						"rowSpan": 1
+					},
+					"type": "crt.NumberInput",
+					"label": "$Resources.Strings.PDS_UsrOfferTypeUsrCommissionPercent_yn5jfjp",
+					"control": "$PDS_UsrOfferTypeUsrCommissionPercent_yn5jfjp",
+					"readonly": true,
+					"placeholder": "",
+					"labelPosition": "auto",
+					"tooltip": ""
+				},
+				"parentName": "GeneralInfoTabContainer",
+				"propertyName": "items",
+				"index": 5
 			}
 		]/**SCHEMA_VIEW_CONFIG_DIFF*/,
 		viewModelConfigDiff: /**SCHEMA_VIEW_MODEL_CONFIG_DIFF*/[
@@ -367,6 +389,11 @@ define("UsrRealty_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 						"modelConfig": {
 							"path": "PDS.UsrCommission"
 						}
+					},
+					"PDS_UsrOfferTypeUsrCommissionPercent_yn5jfjp": {
+						"modelConfig": {
+							"path": "PDS.UsrOfferTypeUsrCommissionPercent_yn5jfjp"
+						}
 					}
 				}
 			},
@@ -399,7 +426,13 @@ define("UsrRealty_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 					"PDS": {
 						"type": "crt.EntityDataSource",
 						"config": {
-							"entitySchemaName": "UsrRealty"
+							"entitySchemaName": "UsrRealty",
+							"attributes": {
+								"UsrOfferTypeUsrCommissionPercent_yn5jfjp": {
+									"path": "UsrOfferType.UsrCommissionPercent",
+									"type": "ForwardReference"
+								}
+							}
 						},
 						"scope": "page"
 					}
@@ -416,6 +449,21 @@ define("UsrRealty_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 					var price = await request.$context.PDS_UsrPrice_e2h8qpn;
 					console.log("Price = " + price);
 					request.$context.PDS_UsrArea_1krch76 = 4000;
+					/* Call the next handler if it exists and return its result. */
+					return next?.handle(request);
+				}
+			},
+			{
+				request: "crt.HandleViewModelAttributeChangeRequest",
+				/* The custom implementation of the system query handler. */
+				handler: async (request, next) => {
+      				if (request.attributeName === 'PDS_UsrPrice_e2h8qpn' || 				             // if price changed
+					   request.attributeName === 'PDS_UsrOfferTypeUsrCommissionPercent_yn5jfjp' ) { 		// or percent changed
+						var price = await request.$context.PDS_UsrPrice_e2h8qpn;
+						var percent = await request.$context.PDS_UsrOfferTypeUsrCommissionPercent_yn5jfjp;
+						var commission = price * percent / 100;
+						request.$context.PDS_UsrCommission_11qgaxm = commission;
+					}
 					/* Call the next handler if it exists and return its result. */
 					return next?.handle(request);
 				}
