@@ -3,6 +3,7 @@
 	<Group Type="String">
 		<Items>
 			<Item Name="AddonConfig.Rules.abe00a1a-ffec-64fa-3c68-8692b209f9a2.Caption" Value="Show elements: Comment" />
+			<Item Name="AddonConfig.Rules.eb247624-3dc8-0b80-7020-50628d3d0c3d.Caption" Value="Show elements: Commission, USD" />
 			<Item Name="Caption" Value="Realty form page (Business rules)" />
 		</Items>
 	</Group>
