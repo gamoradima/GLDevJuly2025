@@ -293,10 +293,32 @@ define("UsrRealty_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 			},
 			{
 				"operation": "insert",
-				"name": "Number",
+				"name": "CommissionPercent",
 				"values": {
 					"layoutConfig": {
 						"column": 2,
+						"colSpan": 1,
+						"row": 3,
+						"rowSpan": 1
+					},
+					"type": "crt.NumberInput",
+					"label": "$Resources.Strings.PDS_UsrOfferTypeUsrCommissionPercent_yn5jfjp",
+					"control": "$PDS_UsrOfferTypeUsrCommissionPercent_yn5jfjp",
+					"readonly": true,
+					"placeholder": "",
+					"labelPosition": "auto",
+					"tooltip": ""
+				},
+				"parentName": "GeneralInfoTabContainer",
+				"propertyName": "items",
+				"index": 4
+			},
+			{
+				"operation": "insert",
+				"name": "Number",
+				"values": {
+					"layoutConfig": {
+						"column": 1,
 						"colSpan": 1,
 						"row": 3,
 						"rowSpan": 1
@@ -313,29 +335,26 @@ define("UsrRealty_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 				},
 				"parentName": "GeneralInfoTabContainer",
 				"propertyName": "items",
-				"index": 4
+				"index": 5
 			},
 			{
 				"operation": "insert",
-				"name": "CommissionPercent",
+				"name": "CategoryMultiSelect",
 				"values": {
-					"layoutConfig": {
-						"column": 2,
-						"colSpan": 1,
-						"row": 4,
-						"rowSpan": 1
-					},
-					"type": "crt.NumberInput",
-					"label": "$Resources.Strings.PDS_UsrOfferTypeUsrCommissionPercent_yn5jfjp",
-					"control": "$PDS_UsrOfferTypeUsrCommissionPercent_yn5jfjp",
-					"readonly": true,
-					"placeholder": "",
+					"type": "crt.MultiSelect",
+					"label": "#ResourceString(CategoryMultiSelect_label)#",
+					"recordId": "$Id",
+					"recordRelationColumnName": "UsrParentRealty",
+					"selectSchemaName": "UsrCategoryInRealty",
+					"selectColumnName": "UsrCategory",
+					"visible": true,
 					"labelPosition": "auto",
+					"placeholder": "",
 					"tooltip": ""
 				},
-				"parentName": "GeneralInfoTabContainer",
+				"parentName": "GeneralInfoTab",
 				"propertyName": "items",
-				"index": 5
+				"index": 1
 			},
 			{
 				"operation": "insert",
@@ -361,7 +380,7 @@ define("UsrRealty_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 				},
 				"parentName": "GeneralInfoTab",
 				"propertyName": "items",
-				"index": 1
+				"index": 2
 			},
 			{
 				"operation": "insert",
