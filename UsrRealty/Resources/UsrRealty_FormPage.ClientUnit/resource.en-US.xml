@@ -16,6 +16,7 @@
 			<Item Name="LocalizableStrings.GridDetailRefreshBtn_88exuki_caption.Value" Value="Refresh" />
 			<Item Name="LocalizableStrings.GridDetailSearchFilter_k5v4jp3_placeholder.Value" Value="Search" />
 			<Item Name="LocalizableStrings.GridDetailSettingsBtn_kk11wcv_caption.Value" Value="Actions" />
+			<Item Name="LocalizableStrings.MaxPriceMenuItem_caption.Value" Value="Call Max Price web service" />
 			<Item Name="LocalizableStrings.NumberInput_fuepa4p_label.Value" Value="Number" />
 			<Item Name="LocalizableStrings.PriceCannotBeLess.Value" Value="Price cannot be less than 50.0 USD" />
 			<Item Name="LocalizableStrings.PushMeButton_caption.Value" Value="Push me!" />
